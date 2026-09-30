@@ -1,0 +1,150 @@
+@page "/"
+@namespace BlazorUI.Pages
+@using BlazorUI.Services
+@inject NavigationManager Navigation
+@inject IAuthService AuthService
+@inject AuthState AuthState
+
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h1>Login</h1>
+            <p>ITAccom Email Import</p>
+        </div>
+
+        <form class="login-form" @onkeydown="OnKey">
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text"
+                       id="username"
+                       class="form-control login-input"
+                       placeholder="Enter your username"
+                       autocomplete="off"
+                       @bind="_username" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password"
+                       id="password"
+                       class="form-control login-input"
+                       placeholder="Enter your password"
+                       autocomplete="off"
+                       @bind="_password" />
+            </div>
+
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <div class="otp-input-group">
+                    <input type="password"
+                           id="otp"
+                           class="form-control login-input"
+                           placeholder="Enter OTP"
+                           autocomplete="off"
+                           @bind="_otp" />
+                    <button type="button" class="btn btn-secondary otp-button" @onclick='() => Click("btnOTP")'>Get OTP</button>
+                </div>
+            </div>
+
+            @if (_showError)
+            {
+                <div class="login-error-message" role="alert">
+                    <p id="errorText">@_errorText</p>
+                </div>
+            }
+
+            <button type="button" class="btn btn-primary btn-login" disabled="@_busy" @onclick='() => Click("btnLogon")'>
+                @(_busy ? "Checking..." : "Logon")
+            </button>
+            <button type="button" class="btn btn-secondary btn-exit" @onclick='() => Click("btnExit")'>Exit</button>
+        </form>
+
+        <!-- webView21 from the WinForms login: OTP page -->
+        <iframe class="otp-frame" src="http://10.0.1.3/justotp.aspx" title="OTP"></iframe>
+    </div>
+</div>
+
+@code {
+    private string _username = string.Empty;   // txtbxUser
+    private string _password = string.Empty;   // txtbxPassword
+    private string _otp = string.Empty;        // txtOTP
+    private bool _showError = false;           // txtbxWrong.Visible
+    private string _errorText = string.Empty;  // txtbxWrong.Text
+    private bool _busy = false;                // disables the button while the DB check runs
+
+    // Enter key behaves like WinForms AcceptButton = btnLogon
+    private async Task OnKey(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") await Click("btnLogon");
+    }
+
+    private async Task Click(string name)
+    {
+        switch (name)
+        {
+            case "btnLogon":
+                await PerformLogin();
+                break;
+
+            case "btnOTP":
+                // The OTP page is already displayed in the iframe (webView21.CoreWebView2.Navigate
+                // did the same thing in WinForms). Nothing else to trigger here.
+                break;
+
+            case "btnExit":
+                Exit();
+                break;
+        }
+    }
+
+    private async Task PerformLogin()
+    {
+        _showError = false;
+        _busy = true;
+
+        try
+        {
+            var outcome = await AuthService.LoginAsync(_username, _password, _otp);
+
+            switch (outcome)
+            {
+                case LoginOutcome.Success:
+                    AuthState.SignIn(_username);
+                    Navigation.NavigateTo("/dashboard");
+                    break;
+
+                case LoginOutcome.IncorrectPassword:
+                    _showError = true;
+                    _errorText = "Incorrect Password";
+                    break;
+
+                case LoginOutcome.IncorrectUser:
+                    _showError = true;
+                    _errorText = "Incorrect User";
+                    break;
+
+                case LoginOutcome.InvalidOtp:
+                    _showError = true;
+                    _errorText = "OTP must be a number.";
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            _showError = true;
+            _errorText = $"Could not reach the login database: {ex.Message}";
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private void Exit()
+    {
+        _username = string.Empty;
+        _password = string.Empty;
+        _otp = string.Empty;
+        _showError = false;
+    }
+}

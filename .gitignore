@@ -1,0 +1,6 @@
+# Exclude Visual Studio user-specific files and folders
+.vs/
+
+# Build output
+bin/
+obj/

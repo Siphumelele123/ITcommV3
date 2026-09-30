@@ -1,0 +1,8 @@
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractCOCore.csproj.AssemblyReference.cache
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractCOCore.csproj.ResolveComReference.cache
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractC.FrmEmailExport.resources
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractC.FrmLoginAtt.resources
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractC.Properties.Resources.resources
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractCOCore.csproj.GenerateResource.cache
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractCOCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\NewCallCentre\ITAccomEmailExtractCO\ITAccomEmailExtractCOCore\obj\Release\net9.0-windows\ITAccomEmailExtractCOCore.csproj.CoreCompileInputs.cache

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ITAccomEmailExtractC.exe" version="1.0.0.5" publicKeyToken="08b373c005ecf317" language="neutral" processorArchitecture="amd64" type="win32" />
+  <description asmv2:iconFile="Accplish.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ITAccomEmailExtractC" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
+    <commandLine file="ITAccomEmailExtractC.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelDataReader.dll" size="161792">
+      <assemblyIdentity name="ExcelDataReader" version="3.6.0.0" publicKeyToken="93517DBE6A4012FA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6hvMAj7Is/B2040UpwiQbVdWI2k5FYX4qMKBjZMAsEc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelDataReader.DataSet.dll" size="9728">
+      <assemblyIdentity name="ExcelDataReader.DataSet" version="3.6.0.0" publicKeyToken="93517DBE6A4012FA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>psiBU4wfpUbJxmD6JqL31nw+5BVamxZsMedAftxtvHI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ITAccomEmailExtractC.exe" size="333768">
+      <assemblyIdentity name="ITAccomEmailExtractC" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>AunqEzMqwhSRbXp4omTEP0iCCTUjf2zvXUH6bquJPUU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Web.WebView2.Core.dll" size="500696">
+      <assemblyIdentity name="Microsoft.Web.WebView2.Core" version="1.0.1938.49" publicKeyToken="2A8AB48044D2601E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>mlIKGgSoAHqsyc0dbBWYhCxJ7S25ApanA20qDBTzNBo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Web.WebView2.WinForms.dll" size="38360">
+      <assemblyIdentity name="Microsoft.Web.WebView2.WinForms" version="1.0.1938.49" publicKeyToken="2A8AB48044D2601E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>1qx3TOcbtxyeztXDEkzFgbJ5BeeQ7ba8PZnddmeRBAQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Web.WebView2.Wpf.dll" size="44504">
+      <assemblyIdentity name="Microsoft.Web.WebView2.Wpf" version="1.0.1938.49" publicKeyToken="2A8AB48044D2601E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>jSBR3Y4MEJkqBs6JoLwCp/CwSjkI6w15aE0Sl8nGZ1o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Accplish.ico" size="7134">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>C6eULfx6+rL75HFDEHQoOo5SgmmVDMjGhuN3GUBZlQI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ITAccomEmailExtractC.exe.config" size="2010">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YW2aawoVDl5wjE1nNuxdG9IgspN//4KKEIIE0XPvz7g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="runtimes\win-x64\native\WebView2Loader.dll" size="161240">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>DgJFxk2HEJepKxxw84NwxWdGDRnNL+PYd9/jCvnopbE=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=SUMDESK-W1\Sumesh" issuerKeyHash="469f3cc711deb27f42944dc9ad13567344fef7fd" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>VdUqeCdLPmxhFSeMSd9ryN91YJTev0MleXuhMnel/jo=</DigestValue></Reference></SignedInfo><SignatureValue>raeKz4n11SlnclB7TvWN6B8Gl3cKoGfQGJYher0BlE0zntDxfCSNmpsFCtaM0ejZBXSd7KedSuoR/6Ogj/fsxKi9r+tNPo6W1xrarl09Sclnru+dDdtuqr5vI/0NxN1Vq1bgUcChMDX7uyp8QnqqQbFmUZTKNY7/q4n337MtyBo=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>rz/5e9tWmckhCUcVnx5AIPvf4SlET151BHyhiP347cN84eYUYPzUxQcQC7bmXIyhG8chrrte7ylbRq2Z+8xoBkldxwG7q4TDSoQ/8TxmVT57b4P4WELktcLqSXXL4YMoBONBKodO7sBlMOpa1ipSYUS04SlxD4wzQVz7FWcpdQE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="3afea57732a17b792543bfde946075dfc86bdf498c2715616c3e4b27782ad555" Description="" Url=""><as:assemblyIdentity name="ITAccomEmailExtractC.exe" version="1.0.0.5" publicKeyToken="08b373c005ecf317" language="neutral" processorArchitecture="amd64" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=SUMDESK-W1\Sumesh</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>ZMsDkRSfLuPx6nxp1i9tu2I4i92IWxqZvyVt4pdReLU=</DigestValue></Reference></SignedInfo><SignatureValue>GEkQIFBVipS0UlHD93hU8LwSXrgRyt++EOa0DsbPhzqbUMYgozwseIK6Eb26/zT/3l9iP7UvN41/mEvsiNrY5IBovcwXmi614u+yyjet8JnzLi80W+S5mcfHEQdV2r5/p4bnp9nLTzPpw/1BV9TweGUqAbpXibpI2rLVAahqDB4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>rz/5e9tWmckhCUcVnx5AIPvf4SlET151BHyhiP347cN84eYUYPzUxQcQC7bmXIyhG8chrrte7ylbRq2Z+8xoBkldxwG7q4TDSoQ/8TxmVT57b4P4WELktcLqSXXL4YMoBONBKodO7sBlMOpa1ipSYUS04SlxD4wzQVz7FWcpdQE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB3TCCAUagAwIBAgIQbz3V76+noqpKImbH462W8TANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDHiIAUwBVAE0ARABFAFMASwAtAFcAMQBcAFMAdQBtAGUAcwBoMB4XDTIzMDkyMTEyNDgzNloXDTI0MDkyMDE4NDgzNlowLTErMCkGA1UEAx4iAFMAVQBNAEQARQBTAEsALQBXADEAXABTAHUAbQBlAHMAaDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEArz/5e9tWmckhCUcVnx5AIPvf4SlET151BHyhiP347cN84eYUYPzUxQcQC7bmXIyhG8chrrte7ylbRq2Z+8xoBkldxwG7q4TDSoQ/8TxmVT57b4P4WELktcLqSXXL4YMoBONBKodO7sBlMOpa1ipSYUS04SlxD4wzQVz7FWcpdQECAwEAATANBgkqhkiG9w0BAQsFAAOBgQA8DQ1j3dzcdlthqGj12zDm3CXI6vlAFbgCLbWGkwc4u40/2b1M6ul2DHHQWCsSJV0ZeI+HOEpftNsWyeijCle+xXF6iSRHh0YxiJGwHzEc4SgcZk56Ee/OGBH/W3YlF/fq07mkfXM/zwdyAWZSXu5knQVzlp8ifCr6g/sY3USpoA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

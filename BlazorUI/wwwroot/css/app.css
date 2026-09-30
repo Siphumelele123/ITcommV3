@@ -1,0 +1,762 @@
+/* ================================================
+   Muted Palette & Modern Clean Design
+   ================================================ */
+
+:root {
+    /* Base / Background */
+    --color-bg-main: #F5F6F8;
+    --color-bg-surface: #FFFFFF;
+
+    /* Structure / Borders */
+    --color-border: #D8DCE3;
+
+    /* Primary Accent */
+    --color-primary: #2B4C6F;
+    --color-primary-hover: #1E3A54;
+
+    /* Secondary */
+    --color-secondary-bg: #E9EBEF;
+    --color-secondary-text: #3A3F47;
+
+    /* Text */
+    --color-text-primary: #2A2E35;
+    --color-text-secondary: #6B7280;
+
+    /* Spacing & sizing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius: 6px;
+    --transition: all 0.2s ease;
+}
+
+/* ================================================
+   Global & Base Styles
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                 sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-main);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ================================================
+   Main Layout & Structure
+   ================================================ */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: var(--spacing-lg);
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* ========================
+   Dropdown Section (Top)
+   ======================== */
+
+.dropdown-section {
+    width: 100%;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-section .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.dropdown-section label {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 14px;
+}
+
+.dropdown-main {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dropdown-main:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(43, 76, 111, 0.05);
+}
+
+.dropdown-main:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(43, 76, 111, 0.1);
+}
+
+/* ========================
+   Log Section (Top)
+   ======================== */
+
+.log-section {
+    width: 100%;
+    min-height: 200px;
+}
+
+.log-output {
+    width: 100%;
+    height: 200px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.log-output:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(43, 76, 111, 0.1);
+}
+
+/* ========================
+   Content Wrapper & Grid
+   ======================== */
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.sidebar-primary,
+.sidebar-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* ========================
+   Cards & Sections
+   ======================== */
+
+.card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.section-group:last-child {
+    margin-bottom: 0;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--spacing-md) 0;
+}
+
+/* ========================
+   Forms & Inputs
+   ======================== */
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.form-row > .form-control,
+.form-row > .btn {
+    flex-shrink: 0;
+}
+
+.form-row > .flex-1 {
+    flex: 1;
+    min-width: 150px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.form-control {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: inherit;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(43, 76, 111, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.form-control:disabled {
+    background-color: #F9FAFB;
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+}
+
+/* List boxes (select) */
+.list-box {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: inherit;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.list-box:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(43, 76, 111, 0.1);
+}
+
+.list-box option {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.list-box option:checked {
+    background: linear-gradient(var(--color-primary), var(--color-primary));
+}
+
+/* ========================
+   Buttons
+   ======================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: inherit;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    min-height: 36px;
+}
+
+/* Primary buttons */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+    background-color: #9CA3AF;
+    cursor: not-allowed;
+}
+
+/* Secondary buttons */
+.btn-secondary {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-secondary-text);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: #DFE2EA;
+    border-color: var(--color-border);
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary:disabled {
+    background-color: #F3F4F6;
+    color: #D1D5DB;
+    cursor: not-allowed;
+}
+
+/* Full width buttons */
+.w-100 {
+    width: 100%;
+}
+
+/* ================================================
+   Responsive Design
+   ================================================ */
+
+/* Tablet: 768px and below */
+@media (max-width: 768px) {
+    main {
+        padding: var(--spacing-md);
+    }
+
+    .log-output {
+        height: 150px;
+    }
+
+    /* Switch to 2-column layout (sidebar + main) */
+    .content-wrapper {
+        grid-template-columns: 1fr 1.5fr;
+        gap: var(--spacing-md);
+    }
+
+    .sidebar-secondary {
+        display: none;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row > .form-control,
+    .form-row > .btn {
+        width: 100%;
+    }
+}
+
+/* Mobile: 640px and below */
+@media (max-width: 640px) {
+    :root {
+        font-size: 13px;
+        --spacing-md: 12px;
+        --spacing-lg: 16px;
+    }
+
+    main {
+        padding: var(--spacing-md);
+    }
+
+    .card {
+        padding: var(--spacing-md);
+    }
+
+    .card-title {
+        font-size: 14px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .log-output {
+        height: 120px;
+        font-size: 11px;
+    }
+
+    /* Full single column layout */
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-primary,
+    .sidebar-secondary,
+    .main-content {
+        width: 100%;
+    }
+
+    .sidebar-secondary {
+        display: flex;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row > .form-control,
+    .form-row > .btn {
+        width: 100%;
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 40px;
+        font-size: 13px;
+    }
+
+    .section-group {
+        margin-bottom: 0;
+    }
+
+    .divider {
+        margin: var(--spacing-md) 0;
+    }
+}
+
+/* Small mobile: 480px and below */
+@media (max-width: 480px) {
+    :root {
+        font-size: 12px;
+    }
+
+    main {
+        padding: var(--spacing-sm);
+    }
+
+    .card {
+        padding: var(--spacing-sm);
+    }
+
+    .card-title {
+        font-size: 13px;
+    }
+
+    .section-subtitle {
+        font-size: 11px;
+    }
+
+    .log-output {
+        height: 100px;
+        font-size: 10px;
+    }
+}
+
+/* ================================================
+   Login Page Styling
+   ================================================ */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--color-bg-main) 0%, #EBF0F7 100%);
+    padding: var(--spacing-md);
+}
+
+.login-box {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(43, 76, 111, 0.12);
+    width: 100%;
+    max-width: 380px;
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-header p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.login-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.login-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.login-input {
+    padding: var(--spacing-md) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.login-input:hover {
+    border-color: #B8C5D4;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(43, 76, 111, 0.1);
+}
+
+.login-input::placeholder {
+    color: #A0A7B0;
+}
+
+.otp-input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.otp-input-group .login-input {
+    flex: 1;
+}
+
+.otp-button {
+    padding: var(--spacing-md) var(--spacing-md);
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.login-error-message {
+    background-color: #FEE8E8;
+    border: 1px solid #F5B9B9;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    color: #C41E1E;
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-error-message p {
+    margin: 0;
+}
+
+.btn-login,
+.btn-exit {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-login {
+    background-color: var(--color-primary);
+    color: white;
+    width: 100%;
+}
+
+.btn-login:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(43, 76, 111, 0.2);
+}
+
+.btn-login:active {
+    transform: translateY(1px);
+}
+
+.btn-exit {
+    background-color: #E8EAEF;
+    color: var(--color-text-primary);
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.btn-exit:hover {
+    background-color: #DDE1E9;
+}
+
+.btn-exit:active {
+    transform: translateY(1px);
+}
+
+/* ================================================
+   Login Page Responsive
+   ================================================ */
+
+@media (max-width: 768px) {
+    .login-box {
+        max-width: 100%;
+        padding: var(--spacing-lg);
+    }
+
+    .login-header h1 {
+        font-size: 24px;
+    }
+
+    .btn-login,
+    .btn-exit {
+        padding: var(--spacing-md) var(--spacing-md);
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: var(--spacing-md);
+    }
+
+    .login-box {
+        padding: var(--spacing-md);
+    }
+
+    .login-header h1 {
+        font-size: 20px;
+    }
+
+    .login-input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 12px;
+    }
+}
+
+/* ================================================
+   Utility Classes
+   ================================================ */
+
+.w-100 {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--color-text-secondary);
+}
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+
+.gap-1 { gap: var(--spacing-xs); }
+.gap-2 { gap: var(--spacing-sm); }
+.gap-3 { gap: var(--spacing-md); }
+.gap-4 { gap: var(--spacing-lg); }
+
+/* ================================================
+   Scrollbar Styling (for log output)
+   ================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F3F4F6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}

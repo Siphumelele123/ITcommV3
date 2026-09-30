@@ -1,0 +1,289 @@
+@page "/dashboard"
+@namespace BlazorUI.Pages
+@using BlazorUI.Services
+@inject IPathProvider PathProvider
+@inject AuthState AuthState
+@inject NavigationManager Navigation
+
+<div class="container-main">
+    <!-- Top section: File Type Selector Dropdown -->
+    <section class="dropdown-section">
+        <div class="form-group">
+            <label for="fileTypeSelector">Select File Type</label>
+            <select id="fileTypeSelector" class="form-control dropdown-main" value="@_selectedFileType" @onchange="OnFileTypeChanged">
+                <option value="">-- Select --</option>
+                <option value="ABSA">ABSA</option>
+                <option value="CHQ">CHQ</option>
+                <option value="LOANS">LOANS</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Activity Log + status line (txtAttach / txtProcess) -->
+    <section class="log-section">
+        <textarea class="log-output" readonly placeholder="Activity log will appear here...">@_activityLog</textarea>
+        <input type="text" class="form-control status-line" readonly placeholder="Status" value="@_processStatus" />
+    </section>
+
+    <!-- Main content area -->
+    <div class="content-wrapper">
+        <!-- Left column: Account & folder selection -->
+        <aside class="sidebar-primary">
+            <div class="card">
+                <h3 class="card-title">Mailbox</h3>
+
+                @* Removed: Get Mail Box button *@
+                @* <button class="btn btn-primary" @onclick='() => Click("btnGetMailBox")'>Get Mail Box</button> *@
+
+                <div class="form-group">
+                    <label for="accountList">Accounts</label>
+                    <select id="accountList" class="list-box" size="5" @bind="_selectedAccount">
+                        @foreach (var a in _accounts)
+                        {
+                            <option value="@a">@a</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountFolder">Account Folder</label>
+                    <input type="text" id="accountFolder" class="form-control" placeholder="Account folder" @bind="_accountFolder" />
+                </div>
+                <div class="form-group">
+                    <label for="folderList">Folders</label>
+                    <select id="folderList" class="list-box" size="5" @bind="_selectedFolder">
+                        @foreach (var f in _folders)
+                        {
+                            <option value="@f">@f</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Path Configuration</h3>
+                <div class="form-group">
+                    <label for="desktopPath">Desktop Folder</label>
+                    <input type="text" id="desktopPath" class="form-control" placeholder="Desktop path" @bind="_desktopFolder" />
+                </div>
+                <div class="form-group">
+                    <label for="serverPath">Server Path</label>
+                    <input type="text" id="serverPath" class="form-control" placeholder="Server path" @bind="_serverPath" />
+                </div>
+
+                @* Removed: Folder Check and Move section (Check/DM9, Move to/DONED9M, No. Mail, No. Attachments) *@
+                @*
+                <div class="section-group">
+                    <h4 class="section-subtitle">Folder Check and Move</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="folderCheck">Check</label>
+                            <input type="text" id="folderCheck" class="form-control text-right" @bind="_folderCheck" />
+                        </div>
+                        <div class="form-group">
+                            <label for="folderMove">Move to</label>
+                            <input type="text" id="folderMove" class="form-control text-right" @bind="_folderMove" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mailCount">No. Mail</label>
+                            <input type="text" id="mailCount" class="form-control text-right" @bind="_mailCount" />
+                        </div>
+                        <div class="form-group">
+                            <label for="attachCount">No. Attachments</label>
+                            <input type="text" id="attachCount" class="form-control text-right" @bind="_attachCount" />
+                        </div>
+                    </div>
+                </div>
+                *@
+
+                <button class="btn btn-primary w-100" @onclick='() => Click("btnEmailAtt")'>Get ABSA SFTP Files</button>
+            </div>
+        </aside>
+
+        <!-- Center column: File processing -->
+        <main class="main-content">
+            <div class="card">
+                <h3 class="card-title">File Processing</h3>
+
+                <div class="section-group">
+                    <h4 class="section-subtitle">Process New Files</h4>
+                    <div class="form-group">
+                        <label for="newFileCount">Records to Insert</label>
+                        <input type="number" id="newFileCount" class="form-control" placeholder="0" @bind="_recordsToInsert" />
+                    </div>
+                    <button class="btn btn-primary w-100" @onclick='() => Click("btnGetProcess")'>Get Unprocessed Files</button>
+                    <button class="btn btn-secondary w-100" disabled @onclick='() => Click("btnFileReProcess")'>Get Files to Re-Process</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnFileProcess")'>Process Selected File</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnProcessAllFiles")'>Process All Unprocessed Files</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnProcessOneFiles")'>Process One File</button>
+                </div>
+
+                <hr class="divider" />
+
+                <div class="section-group">
+                    <h4 class="section-subtitle">Redo Files</h4>
+                    <button class="btn btn-secondary" @onclick='() => Click("btnGetProcessRedo")'>Get Redo Files</button>
+                    <button class="btn btn-secondary" @onclick='() => Click("BtnMarkRedo")'>Mark as Redo</button>
+                </div>
+
+                <hr class="divider" />
+
+                <div class="section-group">
+                    <!-- File Management -->
+                    <h4 class="section-subtitle">File Management</h4>
+                    <div class="form-row">
+                        <input type="text" class="form-control flex-1" placeholder="File name" @bind="_newFile" />
+                        <button class="btn btn-secondary" @onclick='() => Click("btnCheckFiles")'>Check Files</button>
+                        <button class="btn btn-secondary" @onclick='() => Click("BtnAddList")'>Add to List</button>
+                        <button class="btn btn-secondary" @onclick='() => Click("btnClearList")'>Clear List</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right column: Advanced options -->
+        @* Removed: entire Advanced Options card (File Type Configuration, Legacy File Processing, Data Management) *@
+        @*
+        <aside class="sidebar-secondary">
+            <div class="card">
+                <h3 class="card-title">Advanced Options</h3>
+
+                <div class="section-group">
+                    <h4 class="section-subtitle">File Type Configuration</h4>
+                    <div class="form-group">
+                        <label for="fileType">File Type</label>
+                        <input type="text" id="fileType" class="form-control" @bind="_oldFileType" />
+                    </div>
+                    <div class="form-group">
+                        <label for="book">Book</label>
+                        <input type="text" id="book" class="form-control" @bind="_book" />
+                    </div>
+                </div>
+
+                <hr class="divider" />
+
+                <div class="section-group">
+                    <h4 class="section-subtitle">Legacy File Processing</h4>
+                    <div class="form-group">
+                        <label for="oldAccountList">Old Accounts</label>
+                        <select id="oldAccountList" class="list-box" size="5" @bind="_selectedOldAccount">
+                            @foreach (var a in _oldAccounts)
+                            {
+                                <option value="@a">@a</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateFilter">Date</label>
+                        <input type="date" id="dateFilter" class="form-control" @bind="_legacyDate" />
+                    </div>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnGetoldUnprocess")'>Get OLD Unprocessed Files</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("bntoldProcess")'>Process OLD All Re/Unprocessed Files</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnFixProcess")'>Fix OLD All Re/Unprocessed Files</button>
+                </div>
+
+                <hr class="divider" />
+
+                <div class="section-group">
+                    <h4 class="section-subtitle">Data Management</h4>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("btnaddDataTable")'>Load file to Datatable</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("button1")'>Move redo to Unprocessed</button>
+                    <button class="btn btn-secondary w-100" @onclick='() => Click("button2")'>Process LegalR All Re/Unprocessed Files</button>
+                </div>
+            </div>
+        </aside>
+        *@
+    </div>
+</div>
+<!-- Advanced options (END HERE) -->
+@code {
+    private string _selectedFileType = string.Empty;
+    private string _desktopFolder = string.Empty;
+    private string _serverPath = string.Empty;
+    private string _activityLog = string.Empty;
+
+    // Fields still used by the visible markup
+    private string _processStatus = string.Empty;          // txtProcess
+    private string _selectedAccount = string.Empty;        // lstBxAccount
+    private string _selectedFolder = string.Empty;         // lstBxFolder
+    private string _accountFolder = string.Empty;          // txtlstBxAccount
+    private int _recordsToInsert = 500;                    // tbRecordsToInsert
+    private string _newFile = string.Empty;                // txtNewFile
+
+    // Kept for when the commented-out sections above are restored.
+    // Currently unused while those markup blocks are commented out - safe to leave in place.
+    private string _selectedOldAccount = string.Empty;     // lstBxAccountOld
+    private string _folderCheck = "DM9";                   // txtbxResponse
+    private string _folderMove = "DONED9M";                // txtbxResponseMove
+    private string _mailCount = "0";                       // txtbxMail
+    private string _attachCount = "0";                     // txtbxAttach
+    private string _oldFileType = "ACCOUNT";               // txtBoxFileType
+    private string _book = "PEDCBHMD";                     // txtBoxBook
+    private DateTime _legacyDate = DateTime.Today;         // dtePickNewDate
+
+    private List<string> _accounts = new();
+    private List<string> _folders = new();
+    private List<string> _oldAccounts = new();
+
+    protected override void OnInitialized()
+    {
+        if (!AuthState.IsLoggedIn)
+        {
+            Navigation.NavigateTo("/", forceLoad: true);
+        }
+    }
+
+    // UI-only stub: replace with real handlers as logic is connected.
+    private void Click(string name) => Log($"{name} clicked (not connected yet).");
+
+    private void OnFileTypeChanged(ChangeEventArgs e)
+    {
+        ApplyFileType(e.Value?.ToString() ?? string.Empty);
+    }
+
+    private void ApplyFileType(string fileType)
+    {
+        _selectedFileType = fileType;
+
+        if (string.IsNullOrWhiteSpace(fileType))
+        {
+            _desktopFolder = string.Empty;
+            _serverPath = string.Empty;
+            Log("File type cleared.");
+            return;
+        }
+
+        try
+        {
+            switch (fileType)
+            {
+                case "ABSA":
+                case "CHQ":
+                case "LOANS":
+                    PathProvider.SelectBank(fileType);
+                    _desktopFolder = PathProvider.CurrentPath;
+                    _serverPath = PathProvider.ServerPath ?? string.Empty;
+                    Log($"Selected {fileType}. Desktop and server paths loaded from config.");
+                    break;
+                default:
+                    _desktopFolder = string.Empty;
+                    _serverPath = string.Empty;
+                    Log($"Unknown file type: {fileType}");
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            _desktopFolder = string.Empty;
+            _serverPath = string.Empty;
+            Log($"Could not load paths for {fileType}: {ex.Message}");
+        }
+    }
+
+    private void Log(string message)
+    {
+        var line = $"{DateTime.Now:HH:mm:ss}  {message}";
+        _activityLog = string.IsNullOrWhiteSpace(_activityLog) ? line : $"{_activityLog}{Environment.NewLine}{line}";
+    }
+}
